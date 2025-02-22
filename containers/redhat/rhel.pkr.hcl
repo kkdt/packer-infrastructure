@@ -8,22 +8,21 @@ packer {
 }
 
 source "docker" "redhat" {
-  image  = "docker.io/redhat/ubi8:latest"
-  commit = true
+  image  = var.container_image
+  commit = var.commit
 }
 
 build {
-  name = "sample-redhat"
+  name = "redhat"
   sources = [
     "source.docker.redhat"
   ]
 
   post-processors {
     post-processor "docker-tag" {
-      repository =  "kkdt/redhat"
-      tags = ["0.1"]
+      repository =  var.tag_repository
+      tags = [var.tag_version]
     }
   }
-
 }
 
