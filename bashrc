@@ -8,7 +8,7 @@ export PATH=${__directory}/bin:$PATH
 # Packer configurations
 export PACKER_CONFIG_DIR=${__directory}/build/.packer
 export PACKER_CACHE_DIR=${__directory}/build/.packer/packer_cache
-export PACKER_LOG_PATH=${__directory}/build/.packer/logs
+export PACKER_LOG_PATH=${__directory}/build/.packer/packer.log
 export PACKER_PLUGIN_PATH=${__directory}/build/.packer/plugins
 export PACKER_LOG=1
 
@@ -23,8 +23,8 @@ local-download-packer() {
   mkdir -p ${__directory}/bin
   mkdir -p ${PACKER_CONFIG_DIR}
   mkdir -p ${PACKER_CACHE_DIR}
-  mkdir -p ${PACKER_LOG_PATH}
   mkdir -p ${PACKER_PLUGIN_PATH}
+  touch ${PACKER_LOG_PATH}
 
   wget -O ${__directory}/build/${__package} https://releases.hashicorp.com/packer/${__version}/${__package}
   unzip ${__directory}/build/${__package} -d ${__directory}/bin
