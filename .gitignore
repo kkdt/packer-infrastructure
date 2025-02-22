@@ -1,0 +1,11 @@
+.vagrant
+.DS_Store
+.gradle
+.settings
+.project
+.classpath
+*.iml
+*.log
+*.swp
+build/
+bin/
