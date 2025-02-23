@@ -21,7 +21,7 @@ source "docker" "redhat" {
 }
 
 build {
-  name = "redhat"
+  name = "sample"
 
   sources = [
     "source.docker.redhat"

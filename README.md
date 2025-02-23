@@ -33,6 +33,18 @@
     podman images
     ```
 
+5. Execute container
+    ```
+    podman run -it --rm kkdt.github.io/redhat:8.10-1 /bin/bash
+    ```
+
+6. The proof-of-concept should install `local-info` as a function and there should be the users `root` and `kkdt`
+
+7. Isolation - All tools and configurations are installed locally to the cloned project in the `build` directory
+    - Packer, `build/.packer`
+    - Ansible, `build/.ansible-galaxy` 
+
+
 [//]: Links
 
 [packer-docker-builder]: https://developer.hashicorp.com/packer/integrations/hashicorp/docker/latest/components/builder/docker
