@@ -1,0 +1,15 @@
+---
+
+- name: Install functions for all user
+  become: true
+  ansible.builtin.template:
+    src: local-functions.sh.j2
+    dest: /etc/profile.d/local-functions.sh
+
+- name: Change file ownership, group and permissions
+  ansible.builtin.file:
+    path: /etc/profile.d/local-functions.sh
+    owner: root
+    group: root
+    mode: '0644'
+

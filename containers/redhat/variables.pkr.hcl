@@ -1,3 +1,4 @@
+
 variable "commit" {
   type = bool
   description = "Commit the container image after build"
@@ -10,6 +11,12 @@ variable "container_image" {
   default = "docker.io/redhat/ubi8:8.10"
 }
 
+variable "ssh_username" {
+  type = string
+  description = "Ansible SSH user"
+  default = "root"
+}
+
 variable "tag_repository" {
   type = string
   description = "Repository to use when tagging the container image"
@@ -19,5 +26,5 @@ variable "tag_repository" {
 variable "tag_version" {
   type = string
   description = "Container image tag version"
-  default = "0.1"
+  default = "8.10-1"
 }
