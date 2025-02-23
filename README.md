@@ -42,7 +42,17 @@
 
 7. Isolation - All tools and configurations are installed locally to the cloned project in the `build` directory
     - Packer, `build/.packer`
-    - Ansible, `build/.ansible-galaxy` 
+    - Ansible, `build/.ansible-galaxy`
+
+## Build with different pkrvars
+
+Build using the same Packer script but pass in different pkrvars.
+
+```
+packer build -var-file=pkrvars/app1srv/app1srv.pkrvars.hcl containers/redhat/.
+```
+
+The command above will build a different container image identified by the custom pkrvars file.
 
 
 [//]: Links
