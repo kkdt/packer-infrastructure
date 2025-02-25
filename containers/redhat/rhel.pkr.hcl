@@ -32,7 +32,7 @@ build {
     except = []
     roles_path = "${local.ansible_roles_path}"
     collections_path = "${local.ansible_collections_path}"
-    galaxy_force_install = true
+    galaxy_force_install = var.galaxy_force_install
     galaxy_file = "${local.ansible_requirements_yml}"
     playbook_file = "${local.ansible_playbook}"
     user = "${var.ssh_username}"

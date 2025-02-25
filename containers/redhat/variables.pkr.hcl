@@ -28,3 +28,9 @@ variable "tag_version" {
   description = "Container image tag version"
   default = "8.10-1"
 }
+
+variable "galaxy_force_install" {
+  type = bool
+  description = "Force Ansible galaxy to re-install the roles and collections specified by the requirements file"
+  default = false
+}
