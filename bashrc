@@ -12,26 +12,6 @@ export PACKER_LOG_PATH=${__directory}/build/.packer/packer.log
 export PACKER_PLUGIN_PATH=${__directory}/build/.packer/plugins
 export PACKER_LOG=1
 
-local-download-packer() {
-  local __version="1.8.3"
-  if [ ! -z "${1}" ]; then
-    __version="${1}"
-  fi
-  local __package="packer_${__version}_linux_amd64.zip"
-
-  mkdir -p ${__directory}/build
-  mkdir -p ${__directory}/bin
-  mkdir -p ${PACKER_CONFIG_DIR}
-  mkdir -p ${PACKER_CACHE_DIR}
-  mkdir -p ${PACKER_PLUGIN_PATH}
-  touch ${PACKER_LOG_PATH}
-
-  wget -O ${__directory}/build/${__package} https://releases.hashicorp.com/packer/${__version}/${__package}
-  unzip ${__directory}/build/${__package} -d ${__directory}/bin
-  env | grep PACKER
-}
-
-local-clean() {
-  rm -rf ${__directory}/build
-  rm -rf ${__directory}/bin
-}
+# project-specific
+export PACKER_INFRASTRUCTURE_ANSIBLE_ROLES_PATH=${__directory}/build/.ansible-galaxy/roles
+export PACKER_INFRASTRUCTURE_ANSIBLE_COLLECTIONS_PATH=${__directory}/build/.ansible-galaxy/collections/ansible_collections

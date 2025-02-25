@@ -8,7 +8,7 @@ packer {
 }
 
 locals {
-  ansible_requirements_yml = pathexpand("${path.cwd}/ansible/requirements.yml")
+  ansible_requirements_yml = pathexpand("${path.cwd}/requirements.ansible.yml")
   ansible_playbook = pathexpand("${path.cwd}/ansible/playbook.yml")
   ansible_roles_path = pathexpand("${path.cwd}/build/.ansible-galaxy/roles")
   ansible_collections_path = pathexpand("${path.cwd}/build/.ansible-galaxy/collections")

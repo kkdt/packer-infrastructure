@@ -12,8 +12,8 @@
 
 1. Download and configure packer within the project
     ```
-    source bashrc
-    local-download-packer
+    source buildrc
+    local-build
     env | grep PACKER
     packer --version
     ```
