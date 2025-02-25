@@ -10,6 +10,9 @@ local-build() {
   fi
   local __package="packer_${__version}_linux_amd64.zip"
 
+  echo "----------------------------------------------------"
+  echo "1. Setting up directories"
+  echo "----------------------------------------------------"
   mkdir -p ${__directory}/build
   mkdir -p ${__directory}/bin
 
@@ -21,17 +24,26 @@ local-build() {
   mkdir -p ${PACKER_INFRASTRUCTURE_ANSIBLE_ROLES_PATH}
   mkdir -p ${PACKER_INFRASTRUCTURE_ANSIBLE_COLLECTIONS_PATH}
 
-  echo "Local install of Ansible roles and collections..."
+  echo "----------------------------------------------------"
+  echo "2. Local install of Ansible roles and collections"
+  echo "----------------------------------------------------"
   ansible-galaxy role install --roles-path ${PACKER_INFRASTRUCTURE_ANSIBLE_ROLES_PATH} -r ${__directory}/requirements.ansible.yml
   ansible-galaxy collection install --collections-path ${PACKER_INFRASTRUCTURE_ANSIBLE_COLLECTIONS_PATH} -r ${__directory}/requirements.ansible.yml
 
-  echo "Local install of Packer..."
+  echo "----------------------------------------------------"
+  echo "3. Local install of Packer"
+  echo "----------------------------------------------------"
   wget -O ${__directory}/build/${__package} https://releases.hashicorp.com/packer/${__version}/${__package}
   unzip ${__directory}/build/${__package} -d ${__directory}/bin
 
-  echo "Local install of Packer plugins..."
+  echo "----------------------------------------------------"
+  echo "4. Local install of Packer plugins"
+  echo "----------------------------------------------------"
   packer init ${__directory}/requirements.pkr.hcl
 
+  echo "----------------------------------------------------"
+  echo "5. Environment"
+  echo "----------------------------------------------------"
   env | grep PACKER | sort
 }
 

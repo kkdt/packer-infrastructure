@@ -8,13 +8,15 @@
 2. Leverage [Packer Docker Builder][packer-docker-builder] and Packer Ansible Provisioner to share 
   existing infrastructure-as-code provided by common Ansible playbooks, roles, and collections.
 
+3. Packer required plugins for all Packer builds are declared in a single file to initialize the 
+  environment, see [requirements.pkr.hcl]
+
 ## Quick Start
 
-1. Download and configure packer within the project
+1. Build the isolated Packer environment
     ```
     source buildrc
     local-build
-    env | grep PACKER
     packer --version
     ```
 
@@ -41,7 +43,7 @@
 6. The proof-of-concept should install `local-info` as a function and there should be the users `root` and `kkdt`
 
 7. Isolation - All tools and configurations are installed locally to the cloned project in the `build` directory
-    - Packer, `build/.packer`
+    - Packer, `build/.packer` and `bin`
     - Ansible, `build/.ansible-galaxy`
 
 ## Build with different pkrvars
