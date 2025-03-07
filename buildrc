@@ -13,8 +13,7 @@ local-build() {
   echo "----------------------------------------------------"
   echo "1. Setting up directories"
   echo "----------------------------------------------------"
-  mkdir -p ${__directory}/build
-  mkdir -p ${__directory}/bin
+  mkdir -p ${__directory}/build/bin
 
   mkdir -p ${PACKER_CONFIG_DIR}
   mkdir -p ${PACKER_CACHE_DIR}
@@ -34,7 +33,7 @@ local-build() {
   echo "3. Local install of Packer"
   echo "----------------------------------------------------"
   wget -O ${__directory}/build/${__package} https://releases.hashicorp.com/packer/${__version}/${__package}
-  unzip ${__directory}/build/${__package} -d ${__directory}/bin
+  unzip ${__directory}/build/${__package} -d ${__directory}/build/bin
 
   echo "----------------------------------------------------"
   echo "4. Local install of Packer plugins"
@@ -49,5 +48,4 @@ local-build() {
 
 local-clean() {
   rm -rf ${__directory}/build
-  rm -rf ${__directory}/bin
 }

@@ -9,27 +9,32 @@ packer {
 
 locals {
   ansible_requirements_yml = pathexpand("${path.cwd}/requirements.ansible.yml")
-  ansible_playbook = pathexpand("${path.cwd}/ansible/playbook.yml")
+  ansible_playbook = pathexpand("${path.cwd}/${var.build_playbook}")
   ansible_roles_path = pathexpand("${path.cwd}/build/.ansible-galaxy/roles")
   ansible_collections_path = pathexpand("${path.cwd}/build/.ansible-galaxy/collections")
   ansible_log = pathexpand("${path.cwd}/build/ansible.log")
 }
 
-source "docker" "redhat" {
+source "docker" "image" {
   image  = var.container_image
   commit = var.commit
 }
 
-build {
-  name = "sample"
+source "docker" "file" {
+  build {
+    path = "${path.cwd}/${var.container_file}"
+  }
+  commit = var.commit
+}
 
-  sources = [
-    "source.docker.redhat"
-  ]
+build {
+  name = "default"
+
+  sources = var.packer_build_sources
 
   provisioner "ansible" {
-    only = ["docker.redhat"]
-    except = []
+    # only = ["docker.image"]
+    # except = []
     roles_path = "${local.ansible_roles_path}"
     collections_path = "${local.ansible_collections_path}"
     galaxy_force_install = var.galaxy_force_install
@@ -53,6 +58,7 @@ build {
     post-processor "docker-tag" {
       repository =  var.tag_repository
       tags = [var.tag_version]
+      force = true
     }
   }
 }

@@ -1,3 +1,8 @@
+variable "build_playbook" {
+  type = string
+  description = "Relative path to the Ansible playbook"
+  default = "ansible/playbook.yml"
+}
 
 variable "commit" {
   type = bool
@@ -5,10 +10,22 @@ variable "commit" {
   default = true
 }
 
+variable "container_file" {
+  type = string
+  description = "Relative path to the Containerfile to bootstrap the container image"
+  default = "Containerfile"
+}
+
 variable "container_image" {
   type = string
   description = "The base image to use for the build"
   default = "docker.io/redhat/ubi8:8.10"
+}
+
+variable "packer_build_sources" {
+  type = list(string)
+  description = "Packer source to build: source.docker.image (default) or source.docker.file"
+  default = ["source.docker.image"]
 }
 
 variable "ssh_username" {

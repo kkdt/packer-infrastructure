@@ -3,7 +3,7 @@
 __directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # sets PATH to the local bin directory
-export PATH=${__directory}/bin:$PATH
+export PATH=${__directory}/build/bin:$PATH
 
 # Packer configurations
 export PACKER_CONFIG_DIR=${__directory}/build/.packer

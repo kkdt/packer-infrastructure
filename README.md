@@ -17,33 +17,29 @@
     ```
     source buildrc
     local-build
+    which packer
     packer --version
     ```
 
-2. Initialize the packer environment
+2. Build the container image
     ```
-    packer init containers/redhat/.
-    ```
-
-3. Build the container image
-    ```
-    packer build containers/redhat/.
+    packer build scripts/.
     ```
 
-4. List the image
+3. List the image
     ```
     podman images
     ```
 
-5. Execute container
+4. Execute container
     ```
     podman run -it --rm kkdt.github.io/redhat:8.10-1 /bin/bash
     ```
 
-6. The proof-of-concept should install `local-info` as a function and there should be the users `root` and `kkdt`
+5. The proof-of-concept should install `local-info` as a function and there should be the users `root` and `kkdt`
 
-7. Isolation - All tools and configurations are installed locally to the cloned project in the `build` directory
-    - Packer, `build/.packer` and `bin`
+6. Isolation - All tools and configurations are installed locally to the cloned project in the `build` directory
+    - Packer, `build/.packer` and `build/bin`
     - Ansible, `build/.ansible-galaxy`
 
 ## Build with different pkrvars
@@ -51,7 +47,7 @@
 Build using the same Packer script but pass in different pkrvars.
 
 ```
-packer build -var-file=pkrvars/app1srv/app1srv.pkrvars.hcl containers/redhat/.
+packer build -var-file=containers/app1srv/app1srv.pkrvars.hcl scripts/.
 ```
 
 The command above will build a different container image identified by the custom pkrvars file.
