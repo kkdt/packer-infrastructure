@@ -55,11 +55,18 @@ build {
   }
 
   post-processors {
+
     post-processor "docker-tag" {
       repository =  var.tag_repository
       tags = [var.tag_version]
       force = true
     }
+
+    post-processor "docker-save" {
+      path = "${path.cwd}/build/images/${var.container_tar_filename}"
+      keep_input_artifact = var.keep_input_artifact
+    }
+
   }
 }
 

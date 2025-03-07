@@ -22,6 +22,18 @@ variable "container_image" {
   default = "docker.io/redhat/ubi8:8.10"
 }
 
+variable "container_tar_filename" {
+  type = string
+  description = "The file name for the container"
+  default = "sample.tar"
+}
+
+variable "keep_input_artifact" {
+  type = bool
+  description = "If true, do not delete the docker container, and only save the .tar created by docker save"
+  default = true
+}
+
 variable "packer_build_sources" {
   type = list(string)
   description = "Packer source to build: source.docker.image (default) or source.docker.file"
