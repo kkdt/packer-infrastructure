@@ -23,7 +23,7 @@
 
 2. Build the container image
     ```
-    packer build scripts/.
+    packer build packer/docker/.
     ```
 
 3. List the image
@@ -47,7 +47,7 @@
 Build using the same Packer script but pass in different pkrvars.
 
 ```
-packer build -var-file=containers/app1srv/app1srv.pkrvars.hcl scripts/.
+packer build -var-file=containers/app1srv/app1srv.pkrvars.hcl packer/docker/.
 ```
 
 The command above will build a different container image identified by the custom pkrvars file.
