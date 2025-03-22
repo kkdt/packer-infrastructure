@@ -15,7 +15,6 @@ packer {
 }
 
 locals {
-  ansible_requirements_yml = pathexpand("${path.cwd}/requirements.ansible.yml")
   ansible_playbook = pathexpand("${path.cwd}/${var.build_playbook}")
   ansible_roles_path_local=pathexpand("${path.cwd}/ansible/roles")
   ansible_roles_path = pathexpand("${path.cwd}/build/.ansible-galaxy/roles")
