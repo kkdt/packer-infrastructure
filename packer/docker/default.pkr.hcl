@@ -62,7 +62,7 @@ build {
     playbook_file = "${local.ansible_playbook}"
 
     extra_arguments = [
-      "-vvv",
+      "${var.build_ansible_verbose}",
       "--extra-vars", "container_staging_directory=${var.container_staging_directory}"
     ]
 

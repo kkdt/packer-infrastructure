@@ -4,6 +4,12 @@ variable "build_playbook" {
   default = "ansible/playbook.yml"
 }
 
+variable "build_ansible_verbose" {
+  type = string
+  description = "Ansible verbose flag to pass as Packer variables"
+  default = "-vvv"
+}
+
 variable "commit" {
   type = bool
   description = "Commit the container image after build"

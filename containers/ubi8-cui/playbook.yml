@@ -1,0 +1,18 @@
+---
+- name: Red Hat STIG (roles)
+  hosts: all
+  become: true
+  become_method: sudo
+  gather_facts: true
+  tasks:
+    # This will not work because items in this directory are not uploaded to the container
+    # - name: Include vars
+    #   ansible.builtin.include_vars:
+    #     file: vars.yml
+
+    - name: rhel8_cui
+      ansible.builtin.include_role:
+        name: RedHatOfficial.rhel8_cui
+      vars:
+        enable_strategy: false
+        enable_authselect: false
