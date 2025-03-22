@@ -56,3 +56,4 @@
 [packer-releases]: https://releases.hashicorp.com/packer/
 [packer-plugins-directory]: https://developer.hashicorp.com/packer/docs/plugins
 [packer-docker-ansible]: https://alex.dzyoba.com/blog/packer-for-docker/
+https://www.informaticar.net/setup-virtualization-on-red-hat-8/
