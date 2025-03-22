@@ -1,4 +1,11 @@
 FROM docker.io/redhat/ubi8:8.10
+LABEL maintainer="Thinh Ho"
 
 RUN dnf install -y ansible-core python3.11 \
     && dnf clean all
+
+# Set up default Ansible hosts to use local connection
+RUN mkdir -p /etc/ansible
+RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+
+VOLUME ["/sys/fs/cgroup"]

@@ -23,3 +23,8 @@ roles:
     src: git+https://github.com/kkdt/ansible-role-system-clean.git
     scm: git
     version: master
+
+  - name: RedHatOfficial.rhel8_cui
+    src: git+https://github.com/RedHatOfficial/ansible-role-rhel8-cui.git
+    scm: git
+    version: master
