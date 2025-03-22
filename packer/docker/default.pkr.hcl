@@ -25,6 +25,7 @@ locals {
 source "docker" "image" {
   image  = var.container_image
   commit = var.commit
+  pull = var.pull
 }
 
 source "docker" "file" {
@@ -32,6 +33,7 @@ source "docker" "file" {
     path = "${path.cwd}/${var.container_file}"
   }
   commit = var.commit
+  pull = var.pull
 }
 
 build {
@@ -44,7 +46,7 @@ build {
 
     # Must explictly set ANSIBLE_ROLES_PATH since Packer uploads to 'roles' and we want both the ones from
     # requirements.ansible.yml and the local Ansible roles/collections with this project.
-    command = "ANSIBLE_FORCE_COLOR=1 ANSIBLE_ROLES_PATH=${var.container_staging_directory}/roles/roles ansible-playbook"
+    command = "ANSIBLE_FORCE_COLOR=1 ANSIBLE_ROLES_PATH=${var.container_staging_directory}/roles/roles ANSIBLE_COLLECTIONS_PATH=${var.container_staging_directory}/collections/collections/ansible_collections ansible-playbook"
 
     staging_directory = var.container_staging_directory
 

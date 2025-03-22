@@ -46,6 +46,12 @@ variable "packer_build_sources" {
   default = ["source.docker.image"]
 }
 
+variable "pull" {
+  type = bool
+  description = "Pull prior to use by default; otherwise, assumed the image already exists and can be used"
+  default = true
+}
+
 variable "tag_repository" {
   type = string
   description = "Repository to use when tagging the container image"
