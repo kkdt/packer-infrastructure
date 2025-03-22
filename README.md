@@ -20,7 +20,7 @@
 
 1. Build the isolated Packer environment
     ```
-    source buildrc
+    source bashrc
     local-build
     which packer
     packer --version
@@ -42,6 +42,11 @@
     ```
 
 5. The proof-of-concept should install `local-info` as a function and there should be the users `root` and `kkdt`
+
+6. Clean up the build area
+    ```
+    local-clean
+    ```
 
 
 [//]: Links

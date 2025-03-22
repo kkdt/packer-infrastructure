@@ -46,12 +46,6 @@ variable "packer_build_sources" {
   default = ["source.docker.image"]
 }
 
-variable "ssh_username" {
-  type = string
-  description = "Ansible SSH user"
-  default = "root"
-}
-
 variable "tag_repository" {
   type = string
   description = "Repository to use when tagging the container image"
@@ -62,10 +56,4 @@ variable "tag_version" {
   type = string
   description = "Container image tag version"
   default = "8.10-1"
-}
-
-variable "galaxy_force_install" {
-  type = bool
-  description = "Force Ansible galaxy to re-install the roles and collections specified by the requirements file"
-  default = false
 }
