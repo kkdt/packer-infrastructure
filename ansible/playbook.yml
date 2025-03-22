@@ -1,4 +1,20 @@
 ---
+- name: Default (tasks)
+  hosts: all
+  become: true
+  become_method: sudo
+  gather_facts: true
+  tasks:
+    - name: Inspect where Packer stage artifacts
+      ansible.builtin.shell: |
+        find {{ container_staging_directory }}/roles
+        exit 0
+
+    - name: Add user kkdt
+      ansible.builtin.user:
+        name: kkdt
+        comment: kkdt
+
 
 - name: Default (roles)
   hosts: all
@@ -7,14 +23,3 @@
   gather_facts: true
   roles:
     - role: sample.local-functions
-
-- name: Default (tasks)
-  hosts: all
-  become: true
-  become_method: sudo
-  gather_facts: true
-  tasks:
-    - name: Add user kkdt
-      ansible.builtin.user:
-        name: kkdt
-        comment: kkdt

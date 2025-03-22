@@ -22,6 +22,12 @@ variable "container_image" {
   default = "docker.io/redhat/ubi8:8.10"
 }
 
+variable "container_staging_directory" {
+  type = string
+  description = "The directory inside the container where Packer will stage its artifacts"
+  default = "/opt/packer_install"
+}
+
 variable "container_tar_filename" {
   type = string
   description = "The file name for the container"

@@ -4,11 +4,16 @@
 
 1. Provide an *isolated* Packer environment where all the tooling configurations and runtime 
   are not stored anywhere on the host system, see [bashrc](bashrc).
+    - Packer, `build/.packer` and `build/bin`
+    - Ansible, `build/.ansible-galaxy`
+    - Local Ansible roles/collections are commit with this project as examples, i.e. `sample.local-functions`
 
 2. Leverage [Packer Docker Builder][packer-docker-builder] and Packer Ansible Provisioner to share 
   existing infrastructure-as-code provided by common Ansible playbooks, roles, and collections.
 
-3. Packer required plugins for all Packer builds are declared in a single file to initialize the 
+3. Leverage the Packer Ansible Plugin to executes Ansible directly on the contianer
+
+4. Packer required plugins for all Packer builds are declared in a single file to initialize the 
   environment, see [requirements.pkr.hcl]
 
 ## Quick Start
@@ -21,9 +26,9 @@
     packer --version
     ```
 
-2. Build the container image
+2. Build the container image for Ansible "local" mode
     ```
-    packer build packer/docker/.
+    packer build -var-file=containers/ubi8-ansible/build.pkrvars.hcl packer/docker/.
     ```
 
 3. List the image
@@ -33,24 +38,10 @@
 
 4. Execute container
     ```
-    podman run -it --rm kkdt.github.io/redhat:8.10-1 /bin/bash
+    podman run -it --rm kkdt.github.io/ubi8-ansible:8.10-1 /bin/bash
     ```
 
 5. The proof-of-concept should install `local-info` as a function and there should be the users `root` and `kkdt`
-
-6. Isolation - All tools and configurations are installed locally to the cloned project in the `build` directory
-    - Packer, `build/.packer` and `build/bin`
-    - Ansible, `build/.ansible-galaxy`
-
-## Build with different pkrvars
-
-Build using the same Packer script but pass in different pkrvars.
-
-```
-packer build -var-file=containers/app1srv/app1srv.pkrvars.hcl packer/docker/.
-```
-
-The command above will build a different container image identified by the custom pkrvars file.
 
 
 [//]: Links
