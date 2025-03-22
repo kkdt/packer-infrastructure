@@ -1,3 +1,0 @@
-FROM docker.io/redhat/ubi8:8.10
-
-RUN echo "Containerfile for app1srv" >> /opt/info.txt
