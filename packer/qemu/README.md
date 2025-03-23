@@ -52,9 +52,12 @@ VirtualBox-7.0.x86_64                              7.0.24_167081_el8-1          
 virt-what.x86_64                                   1.25-4.el8                                                  @rhel-8-for-x86_64-baseos-rpms           
 ```
 
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/virtualization_host_configuration_and_guest_installation_guide/sect-virtualization_host_configuration_and_guest_installation_guide-host_installation-installing_kvm_packages_on_an_existing_red_hat_enterprise_linux_system#sect-Virtualization_Host_Configuration_and_Guest_Installation_Guide-Host_Installation-Installing_KVM_packages_on_an_existing_Red_Hat_Enterprise_Linux_system
+
 
 [//]: Links
 
 [conver-imags]: https://docs.openstack.org/image-guide/convert-images.html
 [automate-packer-qemu-image-builds]: https://actuated.com/blog/automate-packer-qemu-image-builds
-
+[create-a-kvm-rhel8-instance]: https://medium.com/@murat.bilal/create-a-kvm-rhel8-6-instance-from-rhel-iso-and-automate-custom-partitioning-with-kickstart-file-5851c128a905
+[building-qemu-kvm-images-packer]: https://support.tools/building-qemu-kvm-images-packer/
