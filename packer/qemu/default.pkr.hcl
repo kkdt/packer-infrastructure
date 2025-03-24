@@ -40,16 +40,16 @@ source "qemu" "main" {
   format = "qcow2"
   accelerator = "kvm"
   http_content = local.data_source_content
-  cd_content = local.data_source_content
+  # cd_content = local.data_source_content
   ssh_username = "root"
-  ssh_password = "s0m3password"
+  ssh_password = "simplep@ssword"
   ssh_timeout = "20m"
-  vm_name = "rhel8"
+  vm_name = "rhel8.qcow2"
   net_device = "virtio-net"
   boot_command = [
     "<wait><tab><wait>",
     "<end><spacebar><wait>",
-    # "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><wait5>",
+    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><wait5>",
     "text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg",
     # "text inst.ks=cdrom:/ks.cfg",
     "<wait><enter>"
@@ -57,7 +57,6 @@ source "qemu" "main" {
   vnc_bind_address = "127.0.0.1"
   vnc_port_min = 5901
   vnc_port_max = 5901
-
 }
 
 build {

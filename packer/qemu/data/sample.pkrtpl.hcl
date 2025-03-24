@@ -81,6 +81,10 @@ autopart
 @base
 @core
 kernel
-kernel-headers
-kernel-devel
+# kernel-headers
+# kernel-devel
 %end
+
+### Reboot after the installation is complete.
+### --eject attempt to eject the media before rebooting.
+reboot --eject
