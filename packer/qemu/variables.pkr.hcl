@@ -1,3 +1,9 @@
+variable "ks_file" {
+  type = string
+  description = "The full path to the kickstart template file to use; default sample.pkrtpl.hcl file will be used"
+  default = ""
+}
+
 variable "vm_disk_partitions" {
   type = object({
     boot = object({

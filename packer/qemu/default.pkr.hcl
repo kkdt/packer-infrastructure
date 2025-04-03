@@ -13,8 +13,9 @@ packer {
 }
 
 locals {
+  provided_ks = var.ks_file != "" ? var.ks_file : "${abspath(path.root)}/data/sample.pkrtpl.hcl"
   data_source_content = {
-    "/ks.cfg" = templatefile("${abspath(path.root)}/data/sample.pkrtpl.hcl", {
+    "/ks.cfg" = templatefile(local.provided_ks, {
       root_password_encrypted = "$6$2WdY/4PHlOmGN4g3$teQZ/liUdj1EotM1M6QRtcj50DT1FKHvoDe/Ke/9JY.E.0iisy2YVaUdwpblbbM5ygaF//cnZa16D8GQXBTyk1",
       vm_disk_partitions = var.vm_disk_partitions,
       vm_volgroup = var.vm_volgroup,
@@ -22,7 +23,6 @@ locals {
       vm_logical_volumes = var.vm_logical_volumes
     })
   }
-
 }
 
 source "qemu" "main" {

@@ -52,6 +52,14 @@ VirtualBox-7.0.x86_64                              7.0.24_167081_el8-1          
 virt-what.x86_64                                   1.25-4.el8                                                  @rhel-8-for-x86_64-baseos-rpms           
 ```
 
+## Provide a custom kickstart template
+
+Provide the full path to the kickstart template file using the `ks_file` variable.
+
+```
+packer build -var ks_file=/home/thinh/ks.pkrtpl.hcl packer/qemu/.
+```
+
 ## List all virtual machines
 
 ```
