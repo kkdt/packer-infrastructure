@@ -52,7 +52,28 @@ VirtualBox-7.0.x86_64                              7.0.24_167081_el8-1          
 virt-what.x86_64                                   1.25-4.el8                                                  @rhel-8-for-x86_64-baseos-rpms           
 ```
 
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/virtualization_host_configuration_and_guest_installation_guide/sect-virtualization_host_configuration_and_guest_installation_guide-host_installation-installing_kvm_packages_on_an_existing_red_hat_enterprise_linux_system#sect-Virtualization_Host_Configuration_and_Guest_Installation_Guide-Host_Installation-Installing_KVM_packages_on_an_existing_Red_Hat_Enterprise_Linux_system
+## List all virtual machines
+
+```
+virsh list --all
+virsh list
+```
+
+## Example process command
+
+```
+/usr/libexec/qemu-kvm
+  -device virtio-net,netdev=user.0 
+  -name rhel8.qcow2 
+  -m 8192M 
+  -machine type=pc,accel=kvm 
+  -vnc 127.0.0.1:1 
+  -smp 1 
+  -drive file=dist/rhel8.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2 
+  -drive file=/home/thinh/workspace/repos/packer-infrastructure/iso/rhel-8.10-x86_64-dvd.iso,media=cdrom 
+  -boot once=d 
+  -netdev user,id=user.0,hostfwd=tcp::3216-:22
+```
 
 
 [//]: Links
@@ -61,3 +82,4 @@ https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/virtual
 [automate-packer-qemu-image-builds]: https://actuated.com/blog/automate-packer-qemu-image-builds
 [create-a-kvm-rhel8-instance]: https://medium.com/@murat.bilal/create-a-kvm-rhel8-6-instance-from-rhel-iso-and-automate-custom-partitioning-with-kickstart-file-5851c128a905
 [building-qemu-kvm-images-packer]: https://support.tools/building-qemu-kvm-images-packer/
+[rhel-virt-packages]: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/virtualization_host_configuration_and_guest_installation_guide/sect-virtualization_host_configuration_and_guest_installation_guide-host_installation-installing_kvm_packages_on_an_existing_red_hat_enterprise_linux_system#sect-Virtualization_Host_Configuration_and_Guest_Installation_Guide-Host_Installation-Installing_KVM_packages_on_an_existing_Red_Hat_Enterprise_Linux_system
